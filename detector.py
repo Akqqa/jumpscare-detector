@@ -51,7 +51,7 @@ print("b:" + str(len(results)))
 o_env = librosa.onset.onset_strength(y=y_5, sr=15)
 
 peaks = librosa.util.peak_pick(y_5, pre_max=5, post_max=5, pre_avg=5, post_avg=5, delta=0.01, wait=100)
-peak_seconds = librosa.frames_to_time(peaks)
+peak_seconds = librosa.frames_to_time(peaks, sr=15, hop_length=1)
 print(len(peak_seconds))
 print(peak_seconds)
 
@@ -61,3 +61,5 @@ librosa.display.waveshow(y=y_5, sr=15)
 plt.show()# YOU CAN CLEARLY SEE THE JUMPSCARES SO WHY ISNT PEAKS DETECTING ANY ??
 
 print(librosa.get_duration(y=y_5, sr=15))
+
+# YO IT WORKS>>!??!?
