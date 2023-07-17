@@ -63,3 +63,19 @@ plt.show()# YOU CAN CLEARLY SEE THE JUMPSCARES SO WHY ISNT PEAKS DETECTING ANY ?
 print(librosa.get_duration(y=y_5, sr=15))
 
 # YO IT WORKS>>!??!?
+
+
+
+# Attempt at longer video with less frequent jumpscares
+
+y, sr = librosa.load("jerma.mp3", sr=15)
+o_env = librosa.onset.onset_strength(y=y, sr=sr)
+peaks = librosa.util.peak_pick(y, pre_max=5, post_max=5, pre_avg=5, post_avg=5, delta=0.0075, wait=100)
+peak_seconds = librosa.frames_to_time(peaks, sr=15, hop_length=1)
+librosa.display.waveshow(y=y, sr=15)
+plt.show()
+print(len(peak_seconds))
+print(peak_seconds)
+print([str(datetime.timedelta(seconds=x)) for x in peak_seconds])
+
+# meh works okay but delta has to be hand picked and still not super accurate
